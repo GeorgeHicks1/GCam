@@ -31,7 +31,7 @@ function camera_closereq(fig_camera,~,arg)
         else
             selection = MFquestdlg(questdlg_position,['Close ' fig_camera.Name '?'],...
             'Close Request Function',...
-            'Yes','No','Release camera','Yes');
+            'Yes','No','Yes');
         end
         
        switch selection

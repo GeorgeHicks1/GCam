@@ -64,7 +64,7 @@ function discovered_devices=search_for_cameras(table1)
             
         end
     end
-    
+    discovered_devices
     table1.Data=discovered_devices;
 end
     

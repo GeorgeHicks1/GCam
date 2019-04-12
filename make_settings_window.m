@@ -4,7 +4,7 @@ function fig_settings=make_settings_window(fig_camera,adaptor)
     clf;
     fig_settings.Name=[fig_camera.Name ' Settings'];
     fig_settings.Position(1)=fig_camera.Position(1)+fig_camera.Position(3);
-    fig_settings.Position(3)=266;
+    fig_settings.Position(3)=278;
     fig_settings.Position(4)=252;
     fig_settings.CloseRequestFcn=@settings_window_close_request;
     
@@ -21,6 +21,7 @@ function fig_settings=make_settings_window(fig_camera,adaptor)
     triggering_tab = uitab('Parent', tgroup, 'Title', 'Triggering');
     saving_tab = uitab('Parent', tgroup, 'Title', 'Saving');
     other_tab = uitab('Parent', tgroup, 'Title', 'Other');
+    advanced_tab = uitab('Parent', tgroup, 'Title', 'Advanced');
     
     jig=0.01;
 
@@ -116,6 +117,25 @@ EKSPLAMode_text=uicontrol('Parent',other_tab,'Style','Text','String','EKSPLA mod
 EKSPLAMode_box=uicontrol('Parent',other_tab,'Style','checkbox','Units','Normalized','Position',[0.5 button_top-1*vgap 0.4 0.1],'Tag','EKSPLAMode_box');
 EKSPLAMode_delay_text=uicontrol('Parent',other_tab,'Style','Text','String','EKSPLA mode delay','Units','Normalized','Position',[0.01 button_top-0.2*vgap 0.3 0.12],'Tag','EKSPLAMode_delay_text');
 EKSPLAMode_delay_box=uicontrol('Parent',other_tab,'Style','Edit','String','6','Units','Normalized','Position',[0.5 button_top-0*vgap 0.4 0.1],'Tag','EKSPLAMode_delay_box');
+
+%advanced tab
+vid_src_info=get(vid_src);
+advanced_table=uitable(advanced_tab,'CellEditCallBack',@change_advanced_table);
+advanced_table.Units='normalized';
+advanced_table.Position=[0.02 0.02 0.96 0.96];
+advanced_table.ColumnEditable=[false true];
+advanced_table.ColumnName={'Setting','Value'};
+advanced_table.ColumnWidth={150,100};
+table_contents=cell(1,2);
+fields=fieldnames(vid_src_info);
+values=struct2cell(vid_src_info);
+for i = 1:length(fields)
+    if isa(values{i},'numeric') || isa(values{i},'char') || isa(values{i},'logical')
+        table_contents{i,1}=fields{i};
+        table_contents{i,2}=values{i};
+    end
+end
+advanced_table.Data=table_contents;
 
 fig_camera.UserData.fig_settings=fig_settings;
 fig_settings.UserData.fig_camera=fig_camera;
