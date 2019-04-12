@@ -1,0 +1,10 @@
+fig=figure(10);
+ax1=axes;
+vidRes=[1000 1000];
+vid.NumberofBands=1;
+displayed_data=imagesc(ax1,zeros(vidRes(2), vidRes(1), vid.NumberofBands ));
+displayed_data.ButtonDownFcn=@GUI_press;
+axis image;
+colormap(ax1,gray);
+ax1.XTick=[];
+ax1.YTick=[];
