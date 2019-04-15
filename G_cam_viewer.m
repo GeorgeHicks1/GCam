@@ -85,7 +85,7 @@ else
 
 
 
-%     table1=uitable(fig_cam_list,'Data',discovered_devices);
+
     table1=uitable(fig_cam_list);
     table1.Tag='Camera_table';
     table1.ColumnName={'Adaptor','Camera ID','Camera Name','Active'};
