@@ -3,9 +3,9 @@ function show_image(vid,eventData,fig_camera)
         image_frame=getdata(vid);
         fig_settings=fig_camera.UserData.fig_settings;
         ax1=findobj(fig_camera,'Type','Axes');
-        displayed_data = findall(fig_camera,'type','image');
+        displayed_data = findall(fig_camera,'type','Image');
         displayed_data.CData=image_frame;
-        frame_counter = findall(fig_camera,'type','text');
+        frame_counter = findall(fig_camera,'type','Text');
         frame_counter.String=vid.FramesAcquired;
         
         if isfield(fig_camera.UserData,'newXLim')

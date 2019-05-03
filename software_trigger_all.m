@@ -15,7 +15,7 @@ function software_trigger_all(software_trigger_all_button,~)
                 Trigger_Listbox=findobj(fig_settings,'Tag','Trigger_Listbox');
                 vid=fig_camera.UserData.vid;
                 if isrunning(vid)
-                    if Trigger_Listbox.Value==1
+                    if Trigger_Listbox.Value==2
                         trigger(vid)
                     end
                 end

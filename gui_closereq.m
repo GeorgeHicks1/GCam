@@ -1,5 +1,5 @@
 function gui_closereq(fig_main,~)
-
+try
    selection = questdlg({'Close Gcam?';'This will close all cameras'},...
       'Close Request Function',...
       'Yes','No','Yes'); 
@@ -47,4 +47,8 @@ function gui_closereq(fig_main,~)
       case 'No'
       return 
    end
+catch
+    
+end
+
 end

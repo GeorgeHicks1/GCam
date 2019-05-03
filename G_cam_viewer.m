@@ -58,7 +58,6 @@ function G_cam_viewer
 %3.1.2 Removed all use of Children, so object referencing is based on tags
 %3.2 Fixed two bugs when using crosshairs while zoomed. Fixed position of
 %frame counter.
-%3.2.1
 %3.2 Added slider for Ximea throughput. Made it so that all settings items
 %appear in settings windows, but are disabled if not applicable. Fixed gain
 %control for USB cameras
@@ -86,7 +85,7 @@ else
 
 
 
-%     table1=uitable(fig_cam_list,'Data',discovered_devices);
+
     table1=uitable(fig_cam_list);
     table1.Tag='Camera_table';
     table1.ColumnName={'Adaptor','Camera ID','Camera Name','Active'};
