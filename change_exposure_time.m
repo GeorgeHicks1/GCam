@@ -50,7 +50,7 @@ function change_exposure_time(exposure_time_box,~)
                     exposure_units_factor=10^(3*(ms_box.Value-1));
                     vid_src.ExposureTimeAbs=str2double(exposure_time_box.String)*exposure_units_factor;
                     disp(['Exposure time set to ' num2str(vid_src.ExposureTimeAbs/exposure_units_factor) ' ' ms_box.String{ms_box.Value}]);
-                    exposure_time_box.String=num2str(double(vid_src.ExposureTime)/exposure_units_factor);
+                    exposure_time_box.String=num2str(double(vid_src.ExposureTimeAbs)/exposure_units_factor);
 
                 end
             end
