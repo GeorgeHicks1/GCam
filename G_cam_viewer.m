@@ -63,7 +63,7 @@ function G_cam_viewer
 %control for USB cameras
 
 if ~isdeployed
-    addpath(pwd)
+    addpath(genpath(pwd))
 end
 
 if ~isempty(findobj('Type','Figure','Name','G cam Camera Select'))
