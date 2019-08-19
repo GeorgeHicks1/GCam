@@ -63,13 +63,9 @@ function G_cam_viewer
 %control for USB cameras
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 if ~isdeployed
     addpath(genpath(pwd))
 end
-=======
-addpath(pwd)
->>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
 =======
 addpath(pwd)
 >>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
