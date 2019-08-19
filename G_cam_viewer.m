@@ -62,9 +62,13 @@ function G_cam_viewer
 %appear in settings windows, but are disabled if not applicable. Fixed gain
 %control for USB cameras
 
+<<<<<<< HEAD
 if ~isdeployed
     addpath(genpath(pwd))
 end
+=======
+addpath(pwd)
+>>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
 
 if ~isempty(findobj('Type','Figure','Name','G cam Camera Select'))
     msgbox('An instance of G-Cam is already running, please close it before opening a new instance','G-cam already running')

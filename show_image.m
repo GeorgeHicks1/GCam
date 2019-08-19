@@ -16,13 +16,13 @@ function show_image(vid,eventData,fig_camera)
         colormap_listbox=findobj(fig_settings,'Type','UIControl','Style','popupmenu','Tag','colormap_listbox');
         Caxis_min=findobj(fig_settings,'Type','UIControl','Style','edit','Tag','Caxis_min_box');
         Caxis_max=findobj(fig_settings,'Type','UIControl','Style','edit','Tag','Caxis_max_box');
-        Caxis_auto_button=findobj(fig_settings,'Type','UIControl','Style','checkbox','Tag','caxis_auto_button');
+        Caxis_lock_button=findobj(fig_settings,'Type','UIControl','Style','checkbox','Tag','caxis_lock_button');
         
 
         colormap(ax1,eval(colormap_listbox.String{colormap_listbox.Value}));
         
         if size(image_frame,3)==1
-            if Caxis_auto_button.Value==0
+            if Caxis_lock_button.Value==1
                 ax1.CLim=[str2double(Caxis_min.String) str2double(Caxis_max.String)];
             else
                 if min(min(image_frame))<max(max(image_frame))
@@ -32,7 +32,7 @@ function show_image(vid,eventData,fig_camera)
                 Caxis_max.String=num2str(ax1.CLim(2));
             end
         elseif size(image_frame,3)==3
-            if Caxis_auto_button.Value==0
+            if Caxis_lock_button.Value==1
                 %ax1.CLim=[str2double(Caxis_min.String) str2double(Caxis_max.String)];
             else
 %                 if min(min(image_frame))<max(max(image_frame))

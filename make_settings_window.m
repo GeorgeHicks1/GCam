@@ -45,6 +45,8 @@ AutoExposure_text=uicontrol('Parent',exposure_tab,'Style','Text','String','Auto'
 AutoExpose_button=uicontrol('Parent',exposure_tab,'Style','checkbox','Units','Normalized','Position',[0.875 button_top-0.4833*vgap 0.288 0.1],'Tag','auto_expose_button','Callback',@change_auto_expose);
 
 Crosshair_text=uicontrol('Parent',tools_tab,'Style','Text','String','Crosshairs','Units','Normalized','Position',[0.25 button_top-0*vgap 0.5 0.075]);
+Caxis_lock_text=uicontrol('Parent',tools_tab,'Style','Text','String','Lock','Units','Normalized','Position',[0.743 button_top-2.85*vgap 0.141 0.075],'Tag','caxis_lock_text');
+Caxis_lock_button=uicontrol('Parent',tools_tab,'Style','checkbox','Units','Normalized','Position',[0.785 button_top-3.558*vgap 0.07 0.1],'Tag','caxis_lock_button');
 Crosshair_button=uicontrol('Parent',tools_tab,'Style','pushbutton','String','New CH','Units','Normalized','Position',[0.02 button_top-1*vgap 0.225 0.1],'Tag','New Crosshair_button','FontSize',7,'Callback',@crosshair_button_press);
 Crosshair_save_button=uicontrol('Parent',tools_tab,'Style','pushbutton','String','Load CH','Units','Normalized','Position',[0.265 button_top-1*vgap 0.225 0.1],'Tag','Load Crosshair_button','FontSize',7,'Callback',@crosshair_load_button_press);
 Crosshair_load_button=uicontrol('Parent',tools_tab,'Style','pushbutton','String','Save CH','Units','Normalized','Position',[0.51 button_top-1*vgap 0.225 0.1],'Tag','Save Crosshair_button','FontSize',7,'Callback',@crosshair_save_button_press);
@@ -58,8 +60,6 @@ Caxis_min.UserData.MinMax=1;
 Caxis_max_text=uicontrol('Parent',tools_tab,'Style','Text','String','CAxis Max','Units','Normalized','Position',[0.437 button_top-3.083*vgap 0.25 0.1],'Tag','caxis_max_text');
 Caxis_max=uicontrol('Parent',tools_tab,'Style','Edit','String','','Units','Normalized','Position',[0.4 button_top-3.6*vgap 0.3 0.1],'Tag','Caxis_max_box','Callback',@clim_adjust);
 Caxis_max.UserData.MinMax=2;
-Caxis_auto_text=uicontrol('Parent',tools_tab,'Style','Text','String','Auto','Units','Normalized','Position',[0.743 button_top-2.85*vgap 0.141 0.075],'Tag','caxis_auto_text');
-Caxis_auto_button=uicontrol('Parent',tools_tab,'Style','checkbox','Units','Normalized','Position',[0.785 button_top-3.558*vgap 0.07 0.1],'Tag','caxis_auto_button');
 
 Trigger_text=uicontrol('Parent',triggering_tab,'Style','Text','String','Trigger Mode','Units','Normalized','Position',[0.092 button_top-0*vgap 0.287 0.077],'Callback',@change_hardware_trigger);
 Trigger_button=uicontrol('Parent',triggering_tab,'Style','pushbutton','String','Software trigger','Units','Normalized','Position',[0.3 button_top-2.15*vgap 0.4 0.1],'Callback',{@trigger_button_press, fig_camera});

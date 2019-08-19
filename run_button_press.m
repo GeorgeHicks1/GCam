@@ -8,42 +8,27 @@ function run_button_press(Run_button,~)
     Camera_table=findobj(fig_main,'Tag','Camera_table');
     if Camera_table.Data{CamID,4}
         vid=fig_camera.UserData.vid;
-        vid_info=imaqhwinfo(vid);
-        adaptor=vid_info.AdaptorName;
-        
-        caxis_auto_button=findobj(fig_settings,'Type','UIControl','Tag','caxis_auto_button');
-        Caxis_min_box=findobj(fig_settings,'Type','UIControl','Tag','Caxis_min_box');
-        Caxis_max_box=findobj(fig_settings,'Type','UIControl','Tag','Caxis_max_box');
-        
         if Run_button.Value==1
-            if vid.NumberofBands==1
-                switch adaptor
-                    case 'gige'
-                        vid_format=vid.VideoFormat;
-                        bit_depth=str2double(vid_format(regexp(vid_format,'\d')));
-                        caxis_auto_button.Value=0;
-                        Caxis_min_box.String=num2str(0);
-                        Caxis_max_box.String=num2str(2.^bit_depth-1);
-                    case 'gentl'
-                        caxis_auto_button.Value=1;
-            end
-         end
-
-            
             switch Trigger_listbox.String{Trigger_listbox.Value}
                 case 'Free run'
                     displayed_data = findall(fig_camera,'type','image');
                     cam_ax=findobj(fig_camera,'Type','Axes');
                     preview(vid,displayed_data)
+                    if vid.NumberofBands==1
+                        caxis_lock_button=findobj(fig_settings,'Type','UIControl','Tag','caxis_lock_button');
+                        Caxis_min_box=findobj(fig_settings,'Type','UIControl','Tag','Caxis_min_box');
+                        Caxis_max_box=findobj(fig_settings,'Type','UIControl','Tag','Caxis_max_box');
+                        caxis_lock_button.Value=1;
+                        Caxis_min_box.String=num2str(cam_ax.CLim(1));
+                        Caxis_max_box.String=num2str(cam_ax.CLim(2));
+                    end
                     Run_button.BackgroundColor='green';
                     fig_camera.UserData.frame_count.String='';
                 case 'Software'
-                    %caxis_lock_button.Value=0;
                     start(vid);
                     Run_button.BackgroundColor='green';
                     fig_camera.UserData.frame_count.String='0';
                 case 'Software pulsed'
-                    %caxis_lock_button.Value=0;
                     start(vid);
                     Run_button.BackgroundColor='green';
                     fig_camera.UserData.frame_count.String='0';
@@ -62,7 +47,6 @@ function run_button_press(Run_button,~)
                         start(pulsed_triggers{fig_camera.Number})
                     end
                 case 'Hardware'
-                    %caxis_lock_button.Value=0;
                     fig_camera.UserData.frame_count.String='0';
                     start(vid);
                     Run_button.BackgroundColor='green';
