@@ -1,5 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
 version='3_2_1';
 
 >>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
@@ -12,4 +15,7 @@ mcc -m G_cam_viewer.m...
 =======
 
 movefile('G_cam_viewer.exe','G_cam_viewer_3_2_1.exe','f')
+<<<<<<< HEAD
+>>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
+=======
 >>>>>>> parent of 64d26d4... Merge pull request #2 from GeorgeHicks1/GeorgeHicks1-patch-1
