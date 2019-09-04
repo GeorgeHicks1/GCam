@@ -16,10 +16,10 @@ Currently, GCam has been tested with cameras made by:
 
 ## Installation instructions
 ### Without a MATLAB license
-1) Install MATLAB runtime 9.1 from the MATLAB website
+1) Install MATLAB runtime 9.1 from the MATLAB website https://uk.mathworks.com/products/compiler/matlab-runtime.html
 2) there is also an update to the runtime, install that too
 3) Install the Ximea software package if you want to use ximeas 
-4) Download the .exe. Not yet available... 
+4) Download the .exe. [G_cam_viewer.exe](/executables/G_cam_viewer.exe)
 
 ## With a MATLAB license
 1) Run any version of MATLAB version 2014b or later. The code was developed on 2016b, other versions may give errors but seem to work ok
