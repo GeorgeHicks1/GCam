@@ -14,7 +14,6 @@ function FullScreenToggle(displayed_data,~)
           end
     else
           %double click
-          disp('double')
           chk = [];
           if fig_camera.UserData.FullScreenMode==false
               fig_camera.UserData.figure_position=fig_camera.Position;

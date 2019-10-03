@@ -37,13 +37,12 @@ function discovered_devices=search_for_cameras(table1)
                     end    
                 end
             elseif strcmp(adaptor_info.InstalledAdaptors{i},'gige')
-                temp_vid = videoinput('gige',j,adaptor_summary.DeviceInfo(j).DefaultFormat);
-                temp_vid_src=getselectedsource(temp_vid);
-                ID_number=temp_vid_src.DeviceID;
-                
-                
+                try
+                    temp_vid = videoinput('gige',j,adaptor_summary.DeviceInfo(j).DefaultFormat);
+                    temp_vid_src=getselectedsource(temp_vid);
                 for m=1:length(gigE_list{1})
                     gigE_named=strfind(temp_vid_src.DeviceID,gigE_list{1}(m));
+                   
                     if ~isempty(gigE_named)
                         discovered_devices{k,3}=gigE_list{2}{m};
                         break
@@ -55,6 +54,12 @@ function discovered_devices=search_for_cameras(table1)
                 delete(temp_vid)
                 clear('temp_vid')
                 clear('temp_vid_src')
+                catch me
+                    disp(['Problem with camera ' adaptor_summary.DeviceInfo(j).DeviceName '. Message:' me.message])
+                    %disp('Couldn''t open camera')
+                    discovered_devices{k,3}=adaptor_summary.DeviceInfo(j).DeviceName;
+                end
+                    
             else
                 discovered_devices{k,3}=adaptor_summary.DeviceInfo(j).DeviceName;
             end

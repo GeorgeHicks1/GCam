@@ -70,7 +70,7 @@ function run_button_press(Run_button,~)
             end
 
 
-
+        disp('Acqusition started')
         elseif Run_button.Value==0
             switch Trigger_listbox.String{Trigger_listbox.Value}
                 case 'Free run'
