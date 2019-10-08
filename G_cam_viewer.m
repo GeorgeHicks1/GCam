@@ -61,6 +61,7 @@ function G_cam_viewer
 %3.2 Added slider for Ximea throughput. Made it so that all settings items
 %appear in settings windows, but are disabled if not applicable. Fixed gain
 %control for USB cameras
+%4.1 added rotation of images
 
 if ~isdeployed
     addpath(genpath(pwd))

@@ -6,6 +6,7 @@ function run_button_press(Run_button,~)
     fig_main=findobj('Type','Figure','Name','G cam Camera Select');
     CamID=fig_camera.UserData.CamID;
     Camera_table=findobj(fig_main,'Tag','Camera_table');
+    
     if Camera_table.Data{CamID,4}
         vid=fig_camera.UserData.vid;
         vid_info=imaqhwinfo(vid);
@@ -70,7 +71,7 @@ function run_button_press(Run_button,~)
             end
 
 
-        disp('Acqusition started')
+        disp(['Acqusition started for ' Camera_table.Data{CamID,3}])
         elseif Run_button.Value==0
             switch Trigger_listbox.String{Trigger_listbox.Value}
                 case 'Free run'
@@ -93,11 +94,11 @@ function run_button_press(Run_button,~)
                     stop(vid)
                     Run_button.BackgroundColor='red';
             end
-            disp('Acqusition stopped')
+            disp(['Acqusition stopped for ' Camera_table.Data{CamID,3}])
         end
         fig_camera.UserData.vid=vid;
     else
-        disp('Camera is not active')
+        disp([Camera_table.Data{CamID,3} ' is not active'])
         Run_button.Value=1-Run_button.Value;
     end
 end

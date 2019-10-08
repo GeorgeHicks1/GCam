@@ -60,6 +60,11 @@ Caxis_max=uicontrol('Parent',tools_tab,'Style','Edit','String','','Units','Norma
 Caxis_max.UserData.MinMax=2;
 Caxis_auto_text=uicontrol('Parent',tools_tab,'Style','Text','String','Auto','Units','Normalized','Position',[0.743 button_top-2.85*vgap 0.141 0.075],'Tag','caxis_auto_text');
 Caxis_auto_button=uicontrol('Parent',tools_tab,'Style','checkbox','Units','Normalized','Position',[0.785 button_top-3.558*vgap 0.07 0.1],'Tag','caxis_auto_button');
+rotation_text=uicontrol('Parent',tools_tab,'Style','Text','String','Rotate','Units','Normalized','Position',[0.05 button_top-5*vgap-0.01 0.15 0.1],'Tag','rotate_text');
+rotation_listbox=uicontrol('Parent',tools_tab,'Style','popupmenu','String',{'0','90','180','270'},'Units','Normalized','Position',[0.25 button_top-5*vgap 0.2 0.1],'Tag','rotation_listbox','Callback',@flip_or_rotate_image);
+flip_text=uicontrol('Parent',tools_tab,'Style','Text','String','Flip','Units','Normalized','Position',[0.50 button_top-5*vgap-0.01 0.15 0.1],'Tag','flip_text');
+flip_checkbox=uicontrol('Parent',tools_tab,'Style','checkbox','Units','Normalized','Position',[0.65 button_top-4.9*vgap 0.3 0.1],'Tag','flip_checkbox','Callback',@flip_or_rotate_image);
+
 
 Trigger_text=uicontrol('Parent',triggering_tab,'Style','Text','String','Trigger Mode','Units','Normalized','Position',[0.092 button_top-0*vgap 0.287 0.077],'Callback',@change_hardware_trigger);
 Trigger_button=uicontrol('Parent',triggering_tab,'Style','pushbutton','String','Software trigger','Units','Normalized','Position',[0.3 button_top-2.15*vgap 0.4 0.1],'Callback',{@trigger_button_press, fig_camera});
