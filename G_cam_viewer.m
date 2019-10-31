@@ -62,6 +62,12 @@ function G_cam_viewer
 %appear in settings windows, but are disabled if not applicable. Fixed gain
 %control for USB cameras
 %4.1 added rotation of images
+%4.2 added option for saving files with a timestamp and disabled some
+%options that are not relevent e.g. CAxis limits when in free run
+%4.2.1 Fixed misplaced save tab buttons
+%4.3 when autosave turned on and now filepath selected, directory
+%automatically created in /Data/Camera_name. Defauly gige format to last in
+%list. Should be highest bit-depth.
 
 if ~isdeployed
     addpath(genpath(pwd))

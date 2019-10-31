@@ -13,6 +13,7 @@ function autosave_all_on(autosave_all_btn,~)
                 fig_settings=fig_camera.UserData.fig_settings;
                 autosave_button=findobj(fig_settings,'Style','Checkbox','Tag','autosave_button');
                 autosave_button.Value=1;
+                autosave_toggle(autosave_button,0)
             end
         end
 end

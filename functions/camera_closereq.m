@@ -1,5 +1,6 @@
 function camera_closereq(fig_camera,~,arg)
     fig_main=findobj('Type','Figure','-and','Name','G cam Camera Select');
+    camera_table=findobj(fig_main,'Type','uitable');
     
     if arg==1
         fig_camera.Units='normalized';
@@ -33,10 +34,9 @@ function camera_closereq(fig_camera,~,arg)
             'Close Request Function',...
             'Yes','No','Yes');
         end
-        
+       camera_name=camera_table.Data{fig_camera.UserData.CamID,3};
        switch selection
           case 'Yes'
-              disp(['Closing camera ' num2str(fig_camera.UserData.CamID)])
              close_video_object(fig_main,fig_camera)
              
              if isfield(fig_camera.UserData,'fig_settings')
@@ -45,6 +45,7 @@ function camera_closereq(fig_camera,~,arg)
                 delete(fig_camera.UserData.fig_settings)
              end
              delete(fig_camera)
+             disp(['Closed ' camera_name])
           case 'No'
               Camera_table=findobj(fig_main,'Tag','Camera_table');
               Camera_table.Data{fig_camera.UserData.CamID,4}=true;
@@ -53,5 +54,6 @@ function camera_closereq(fig_camera,~,arg)
 
              fig_main=findobj('Type','Figure','-and','Name','G cam Camera Select');
              close_video_object(fig_main,fig_camera)
+             disp(['Released ' camera_name])
        end
 end

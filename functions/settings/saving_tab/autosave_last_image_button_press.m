@@ -6,7 +6,7 @@ function autosave_last_image_button_press(Autosave_last_button,~)
     AutoSave_number=findobj(fig_settings,'Type','UIControl','Tag','autosave_number');
     current_image=findobj(ax1,'type','Image');
     image_frame=current_image.CData;
-    imwrite(image_frame,fullfile(filepath_box.String,['Shot' num2str(str2double(AutoSave_number.String),'%03d') '.tiff']))
+    imwrite(image_frame,fullfile(filepath_box.String,['Shot' num2str(str2double(AutoSave_number.String),'%03d') '.tiff']),'Compression','none')
     disp(['Shot' num2str(str2double(AutoSave_number.String),'%03d') '.tiff saved'])
     AutoSave_number.String=num2str(str2double(AutoSave_number.String)+1);
 end

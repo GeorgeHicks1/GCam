@@ -22,4 +22,17 @@ function get_filepath(get_filepath_button,~)
     else
         filepath_box.String=requested_filepath;
     end
+    
+    %now we save the filepath to a csv
+    
+    %check to see if csv already exists
+    
+%     %if it does open it and extract data to a data table
+%     if exist('filepaths.csv','file')
+%         filepaths=cell
+%     %if it doesn't create a data table
+%     %check to see if a camera of this name alraedy has a filepath
+%     %if it does, update the filepath
+%     %if it doesn't add this camera and the filepath to the data table
+%     %save the data table to csv
 end

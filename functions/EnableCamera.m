@@ -20,11 +20,13 @@ function EnableCamera(table1,CellEditData)
             fig_camera{CamID}.UserData.figure_position=fig_camera{CamID}.Position;
             fig_camera{CamID}.UserData.FullScreenMode=false;
             
-
+            
             adaptor_summary=imaqhwinfo(adaptor);
             device_info=adaptor_summary.DeviceInfo(AdaptorCamID);
             if strcmp(adaptor,'gentl')
                 vid_format=device_info.SupportedFormats{2};
+            elseif strcmp(adaptor,'gige')
+                vid_format=device_info.SupportedFormats{end};
             else
                 vid_format=device_info.DefaultFormat;
             end
@@ -86,11 +88,12 @@ function EnableCamera(table1,CellEditData)
             
             frame_count=annotation('textbox');
             frame_count.Units='pixel';
-            frame_count.Position=[0 15 5 5];
+            frame_count.Position=[0 30 5 5];
             frame_count.EdgeColor='none';
             frame_count.Color='r';
             fig_camera{CamID}.UserData.frame_count=frame_count;
             frame_count.Units='normalized';
+            frame_count.FontSize=20;
             
             
             Format_box=findobj(fig_settings,'Type','UIControl','Tag','Format_box');
