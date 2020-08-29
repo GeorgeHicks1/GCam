@@ -2,9 +2,9 @@ function crosshair_load_button_press(Crosshair_load_button,~)
     fig_settings=Crosshair_load_button.Parent.Parent.Parent;
     fig_camera=fig_settings.UserData.fig_camera;
     ax1=findobj(fig_camera,'Type','Axes');
-    filename=uigetfile('*.mat','Load crosshair');
+    [filename,path]=uigetfile('*.mat','Load crosshair');
     if filename~=0
-        ch_file=load(filename);
+        ch_file=load([path,'/',filename]);
         if isfield(ch_file,'crosshair_position')
             old_lines=findobj(ax1,'type','Line');
             delete(old_lines);

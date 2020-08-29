@@ -4,9 +4,9 @@ function crosshair_save_button_press(Crosshair_save_button,~)
     ax1=findobj(fig_camera,'Type','Axes');
     if isfield(fig_camera.UserData,'crosshair_position')
         crosshair_position=fig_camera.UserData.crosshair_position;
-        filename=uiputfile('*.mat','Save crosshair');
+        [filename,path]=uiputfile('*.mat','Save crosshair');
         if filename~=0
-            save(filename,'crosshair_position')
+            save([path,'/',filename],'crosshair_position')
         end
     else
         msgbox('No crosshair found, first click new crosshair')
