@@ -5,8 +5,7 @@ function get_filepath(get_filepath_button,~)
     
     fig_settings=Autosave_tab.Parent.Parent;
     fig_camera=fig_settings.UserData.fig_camera;
-    
-    
+
     %check if the exisiting filepath is actually a filepath and if it is
     %start the dialog from there
     if length(exisiting_filepath)>2
@@ -25,14 +24,42 @@ function get_filepath(get_filepath_button,~)
     
     %now we save the filepath to a csv
     
-    %check to see if csv already exists
     
-%     %if it does open it and extract data to a data table
-%     if exist('filepaths.csv','file')
-%         filepaths=cell
-%     %if it doesn't create a data table
-%     %check to see if a camera of this name alraedy has a filepath
-%     %if it does, update the filepath
-%     %if it doesn't add this camera and the filepath to the data table
-%     %save the data table to csv
+    cam_name=fig_settings.UserData.fig_camera.Name;
+    
+    %check to see if csv already exists
+    if exist('G_cam_config.csv','file')
+        disp('G_cam_config.csv found')
+        settings_table = readtable('G_cam_config.csv');
+        matching_config=[];
+        for i=1:length(settings_table.Camera)
+            if strcmp(cam_name,settings_table.Camera(i))
+                matching_config=[matching_config i];
+            end
+        end
+        
+        if length(matching_config)==1  %already an entry 
+            disp(matching_config(1))
+            settings_table.AutosaveFilepath(matching_config(1))={filepath_box.String};
+            writetable(settings_table,'G_cam_config.csv','Delimiter',',')
+            disp('Config file updated')
+        elseif isempty(matching_config) %no entry, make a new one
+            new_line=table({fig_settings.UserData.fig_camera.Name},{filepath_box.String},'VariableNames',{'Camera','AutosaveFilepath'});
+            settings_table=[settings_table;new_line]
+            writetable(settings_table,'G_cam_config.csv','Delimiter',',')
+            disp('Config file updated')
+        else %too many entries
+            disp(['More than one entry in configuration file for ' cam_name ' no config loaded'])
+        end
+        
+        
+    else
+        disp('G_cam_config.csv not found in get_filepath')
+        settings_table=table({fig_settings.UserData.fig_camera.Name},{filepath_box.String},'VariableNames',{'Camera','AutosaveFilepath'});
+        writetable(settings_table,'G_cam_config.csv','Delimiter',',')
+        disp('Config file created')
+    end
+    
+    
+
 end
