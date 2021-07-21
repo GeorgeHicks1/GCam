@@ -30,7 +30,7 @@ function get_filepath(get_filepath_button,~)
     %check to see if csv already exists
     if exist('G_cam_config.csv','file')
         disp('G_cam_config.csv found')
-        settings_table = readtable('G_cam_config.csv');
+        settings_table = readtable('G_cam_config.csv','HeaderLines',0);
         matching_config=[];
         for i=1:length(settings_table.Camera)
             if strcmp(cam_name,settings_table.Camera(i))

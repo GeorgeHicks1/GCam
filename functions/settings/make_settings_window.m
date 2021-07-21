@@ -16,7 +16,7 @@ function fig_settings=make_settings_window(fig_camera,adaptor)
     loaded_filepath='';
     if exist('G_cam_config.csv','file')
         disp('G_cam_config.csv found')
-        settings_table = readtable('G_cam_config.csv');
+        settings_table = readtable('G_cam_config.csv','HeaderLines',0);
         disp(settings_table)
         %check if there is a matching config file for this camera
         matching_config=[];
