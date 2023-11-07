@@ -6,8 +6,10 @@ try
    Camera_table=findobj(fig_main,'Tag','Camera_table');
    switch selection
       case 'Yes'
-          if ~isempty(cell2mat(Camera_table.Data(1))) %check the table that lists all the cameras and see if it's empty. If it is empty it means there are no cameras detected! So we skip most of the next part
+          if ~isempty(Camera_table.Data) %check the table that lists all the cameras and see if it's empty. If it is empty it means there are no cameras detected! So we skip most of the next part
+              disp('test')
               cam_figures_to_close=cell2mat(Camera_table.Data(:,4)); %find the list of cameras to close
+              
               for i=1:length(cam_figures_to_close)
                   if cam_figures_to_close(i)==true
                       fig_camera=fig_main.UserData.fig_camera{i};%how to get just the ones that are open

@@ -87,11 +87,18 @@ function change_hardware_trigger(Trigger_listbox,~)
                     vid_src.TriggerSource='Line1';
                 end
             case 'Free run'
+                %turn off triggering
+                triggerconfig(vid,'immediate');
+                vid_src.TriggerMode='Off';
+                
+                %disable GUI features that aren't compatible
                 SoftwareTriggerButton.Enable='Off';
                 AquisitionFrequencyBox.Enable='Off';
                 Caxis_min.Enable='Off';
                 Caxis_max.Enable='Off';
                 Caxis_auto_button.Enable='Off';
+                
+                %remove frame counter
                 fig_camera.UserData.frame_count.String='';
         end
     end
