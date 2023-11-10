@@ -16,7 +16,6 @@ function discovered_devices=search_for_cameras(table1)
         FID=fopen('gigE_list.csv');
         gigE_list = textscan(FID,'%s %s','Delimiter',',');
     else
-            disp('gigE_list.csv not found')
             gigE_list{1}={''};
             gigE_list{2}={''};
     end

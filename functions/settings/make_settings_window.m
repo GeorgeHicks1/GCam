@@ -17,7 +17,6 @@ function fig_settings=make_settings_window(fig_camera,adaptor)
     if exist('G_cam_config.csv','file')
         disp('G_cam_config.csv found')
         settings_table = readtable('G_cam_config.csv','HeaderLines',0);
-        disp(settings_table)
         %check if there is a matching config file for this camera
         matching_config=[];
         for i=1:length(settings_table.Camera)
@@ -27,14 +26,13 @@ function fig_settings=make_settings_window(fig_camera,adaptor)
         end
         
         if length(matching_config)==1  %already an entry
-            loaded_filepath=settings_table.AutosaveFilepath(matching_config(1));
+            loaded_filepath=settings_table.AutosaveFilepath{matching_config(1)};
             disp(['Filepath loaded from config file for ' cam_name])
         elseif isempty(matching_config) %no entry, make a new one
             disp('No config entry for this camera name')
         else %too many entries
             disp(['More than one entry in configuration file for ' cam_name ' no config loaded'])
         end
-        
         
     else
         disp('G_cam_config.csv not found')

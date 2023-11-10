@@ -7,7 +7,6 @@ try
    switch selection
       case 'Yes'
           if ~isempty(Camera_table.Data) %check the table that lists all the cameras and see if it's empty. If it is empty it means there are no cameras detected! So we skip most of the next part
-              disp('test')
               cam_figures_to_close=cell2mat(Camera_table.Data(:,4)); %find the list of cameras to close
               
               for i=1:length(cam_figures_to_close)

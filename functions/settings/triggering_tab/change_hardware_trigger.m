@@ -78,6 +78,7 @@ function change_hardware_trigger(Trigger_listbox,~)
                 fig_camera.UserData.frame_count.String='0';
                 if strcmp(adaptor,'gentl')
                     vid_src.TriggerMode='On';
+                    vid_src.TriggerSource='Line0';
                     triggerconfig(vid,'hardware');
                 elseif strcmp(adaptor,'qimaging')
                     triggerconfig(vid, 'hardware', 'risingEdge', 'TTL')

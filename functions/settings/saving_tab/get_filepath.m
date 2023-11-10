@@ -45,7 +45,7 @@ function get_filepath(get_filepath_button,~)
             disp('Config file updated')
         elseif isempty(matching_config) %no entry, make a new one
             new_line=table({fig_settings.UserData.fig_camera.Name},{filepath_box.String},'VariableNames',{'Camera','AutosaveFilepath'});
-            settings_table=[settings_table;new_line]
+            settings_table=[settings_table;new_line];
             writetable(settings_table,'G_cam_config.csv','Delimiter',',')
             disp('Config file updated')
         else %too many entries
@@ -59,7 +59,6 @@ function get_filepath(get_filepath_button,~)
         writetable(settings_table,'G_cam_config.csv','Delimiter',',')
         disp('Config file created')
     end
-    
     
 
 end
